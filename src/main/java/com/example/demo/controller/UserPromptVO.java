@@ -11,7 +11,7 @@ public record UserPromptVO(
     @Override
     public String toString(){
         String template = """
-                %s
+                %s:
                 
                 **Previsión**
                 %s

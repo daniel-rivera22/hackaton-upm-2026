@@ -17,6 +17,9 @@ public class CitizenController {
     private final ApiLlmClient apiLlmClient;
     // Más adelante inyectaremos aquí servicios de base de datos como AlertService o HistorialService
 
+    private static final String SECURITY_SUGGESTIONS_PROMPT =
+            "Dame una recomendación de seguridad basada en la siguiente predicción y contexto personal";
+
     // Inyección de dependencias por constructor
     public CitizenController(ApiPrevisionClient apiPrevisionClient, ApiLlmClient apiLlmClient) {
         this.apiPrevisionClient = apiPrevisionClient;
@@ -27,7 +30,7 @@ public class CitizenController {
      * Endpoint para alimentar el div#infoprevision de dashboard.html
      */
     @GetMapping("/prevision")
-    public ResponseEntity<PrevisionDTO> obtenerprevisionActual() {
+    public ResponseEntity<PrevisionDTO> obtenerPrevisionActual() {
         // 1. Llamamos a la API externa mediante nuestro servicio
         PrevisionDTO previsionActual = apiPrevisionClient.getPrevision();
 
@@ -47,9 +50,7 @@ public class CitizenController {
         // 1. Definimos los prompts. En una versión final, aquí sacarías los datos
         // del usuario (si vive en sótano, necesidades) de la BBDD para personalizar el userPrompt.
         String systemPrompt = "Eres un asistente meteorológico experto en protección civil. Sé breve y directo.";
-        String userPrompt =
-                "Dame una recomendación personalizada de seguridad para el día de hoy basada en el prevision actual y en mi contexto:\n" +
-                "**Previsión actual**:\n" + apiPrevisionClient.getPrevision().toString();
+        String userPrompt = new UserPromptVO(SECURITY_SUGGESTIONS_PROMPT).toString();
 
         // 2. Llamamos al LLM
         String respuestaLlm = apiLlmClient.generateRecommendation(systemPrompt, userPrompt);
