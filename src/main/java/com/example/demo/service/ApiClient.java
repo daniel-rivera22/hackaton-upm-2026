@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.AlertDTO;
+import com.example.demo.dto.PrevisionDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -16,14 +16,14 @@ public class ApiClient {
 
         this.restClient = restBuilder
                 .baseUrl("https://api.github.com/Next-Digital-Hub/hackaton-upm-2026")
-                .defaultHeader("Authorization", "Bearer " + token) // Usamos la variable inyectada
+                .defaultHeader("Authorization", "Bearer " + token)
                 .build();
     }
 
-    public AlertDTO getAlert() {
+    public PrevisionDTO getAlert() {
         return this.restClient.get()
                 .uri("/alertas-meteorologicas")
                 .retrieve()
-                .body(AlertDTO.class);
+                .body(PrevisionDTO.class);
     }
 }
