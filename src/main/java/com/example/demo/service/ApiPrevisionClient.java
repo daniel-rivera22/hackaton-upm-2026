@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.PrevisionDTO;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -23,6 +24,7 @@ public class ApiPrevisionClient {
                 .build();
     }
 
+    @Cacheable("prevision")
     public PrevisionDTO getPrevision() {
         try {
             ResponseEntity<PrevisionDTO> response = this.restClient.get()
