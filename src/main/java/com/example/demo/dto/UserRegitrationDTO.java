@@ -6,7 +6,7 @@ import com.example.demo.model.TipoNecesidades;
 import com.example.demo.model.TipoVivienda;
 
 public record UserRegitrationDTO(
-        String nombre,
+        String username,
         String password,
         Provincia provincia,
         TipoVivienda tipoVivienda,

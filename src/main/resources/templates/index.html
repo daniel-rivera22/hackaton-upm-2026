@@ -25,7 +25,7 @@
         <form id="form-login" action="/api/auth/login" method="POST" class="space-y-5">
             <div>
                 <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Nombre de usuario</label>
-                <input type="text" name="nickName" id="login-nick" class="w-full border-2 border-slate-100 p-3 rounded-xl focus:border-blue-500 outline-none transition" required>
+                <input type="text" name="username" id="login-nick" class="w-full border-2 border-slate-100 p-3 rounded-xl focus:border-blue-500 outline-none transition" required>
             </div>
             <div>
                 <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Contraseña</label>
@@ -39,7 +39,7 @@
         <form id="form-registro" action="/api/auth/registrar" method="POST" class="hidden space-y-4">
             <div>
                 <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Nombre de usuario</label>
-                <input type="text" name="nickName" id="reg-nick" class="w-full border-2 border-slate-100 p-3 rounded-xl focus:border-blue-500 outline-none transition" required>
+                <input type="text" name="username" id="reg-nick" class="w-full border-2 border-slate-100 p-3 rounded-xl focus:border-blue-500 outline-none transition" required>
             </div>
             <div>
                 <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Contraseña</label>
@@ -49,7 +49,7 @@
             <div class="grid grid-cols-2 gap-3">
                 <div>
                     <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Tipo de vivienda</label>
-                    <select name="vivienda" id="reg-vivienda" class="w-full border-2 border-slate-100 p-3 rounded-xl text-sm focus:border-blue-500 outline-none transition" required>
+                    <select name="tipoVivienda" id="reg-vivienda" class="w-full border-2 border-slate-100 p-3 rounded-xl text-sm focus:border-blue-500 outline-none transition" required>
                         <option value="" disabled selected>Elegir vivienda</option>
                         <option value="SOTANO">Sótano</option>
                         <option value="PLANTA_BAJA">Planta baja</option>
@@ -121,15 +121,15 @@
                 <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Necesidades especiales</label>
                 <div class="grid grid-cols-1 gap-2 bg-slate-50 p-3 rounded-xl border border-slate-100">
                     <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-                        <input type="checkbox" name="necesidades" value="SILLA_RUEDAS" class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                        <input type="checkbox" name="tipoNecesidades" value="SILLA_RUEDAS" class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
                         Silla de ruedas
                     </label>
                     <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-                        <input type="checkbox" name="necesidades" value="PERSONA_DEPENDIENTE" class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                        <input type="checkbox" name="tipoNecesidades" value="PERSONA_DEPENDIENTE" class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
                         Persona dependiente
                     </label>
                     <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-                        <input type="checkbox" name="necesidades" value="MASCOTAS" class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                        <input type="checkbox" name="tipoNecesidades" value="MASCOTAS" class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
                         Mascotas
                     </label>
                 </div>

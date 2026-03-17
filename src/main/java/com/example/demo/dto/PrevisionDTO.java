@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties
 public record PrevisionDTO(
         @JsonProperty("indicativo") String indicativoEstacion,
-        @JsonProperty("nombre") String nombreEstacion,
+        @JsonProperty("username") String nombreEstacion,
         @JsonProperty("provincia") String provincia,
         @JsonProperty("altitud") String altitudMetros,
         @JsonProperty("fecha") String fecha,
