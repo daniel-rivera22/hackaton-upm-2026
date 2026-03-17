@@ -35,9 +35,9 @@ public class CitizenController {
         this.apiLlmClient = apiLlmClient;
     }
 
-    @GetMapping("/user")
-    public ResponseEntity<User> getCitizenByUsername(String name){
-        Optional<User> user = this.userService.findByUsername(name);
+    @GetMapping("/user/{username}")
+    public ResponseEntity<User> getCitizenByUsername(@PathVariable String username){
+        Optional<User> user = this.userService.findByUsername(username);
         return ResponseEntity.of(user);
     }
 
