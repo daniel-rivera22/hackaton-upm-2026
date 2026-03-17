@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static org.springframework.http.ResponseEntity.ok;
-
 @RestController
 @RequestMapping("/dashboard")
 public class CitizenController {
@@ -23,7 +21,6 @@ public class CitizenController {
     private final UserService userService;
     private final ApiPredictionClient apiPredictionClient;
     private final ApiLlmClient apiLlmClient;
-    // Más adelante inyectaremos aquí servicios de base de datos como AlertService o HistorialService
 
     private static final String SECURITY_SUGGESTIONS_PROMPT =
             "Dame una recomendación de seguridad basada en la siguiente predicción y contexto personal";
