@@ -69,7 +69,7 @@ function cargarRecomendacionIA(username, predictionData) {
         headers: {
             'Content-Type': 'application/json' // ¡Ahora sí enviamos JSON!
         },
-        body: JSON.stringify(predictionData)   // Magia: pasamos todo el objeto de golpe
+        body: JSON.stringify(predictionData)
     })
     .then(response => {
         if (!response.ok) {
