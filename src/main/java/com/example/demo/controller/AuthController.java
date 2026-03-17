@@ -27,7 +27,7 @@ public class AuthController {
     public String registrar(UserRegitrationDto dto){
         try {
             userService.registrarCiudadano(dto);
-            return "redirect:/index.html?success=true";
+            return "redirect:/dashboard.html?success=true";
         }catch (Exception e){
             return "redirect:/index.html?error=" + e.getMessage();
         }
