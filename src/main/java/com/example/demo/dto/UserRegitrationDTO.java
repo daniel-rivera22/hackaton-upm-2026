@@ -23,7 +23,7 @@ public record UserRegitrationDTO(
                 - **Necesidades Especiales**: %s
                 - **Rol en el sistema**: %s
                 """.formatted(
-                nombre,
+                username,
                 provincia,
                 tipoVivienda,
                 tipoNecesidades,
