@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.User;
 import com.example.demo.model.Rol;
-import com.example.demo.dto.UserRegitrationDto;
+import com.example.demo.dto.UserRegitrationDTO;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,7 +19,7 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    public void registrarCiudadano(UserRegitrationDto dto){
+    public void registrarCiudadano(UserRegitrationDTO dto){
         if (userRepository.exitsByUsername(dto.nombre())){
             throw new RuntimeException("Error: El nombre de usuario "+dto.nombre().trim()+" ya existe.");
         }

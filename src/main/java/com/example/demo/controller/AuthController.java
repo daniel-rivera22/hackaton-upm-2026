@@ -1,11 +1,10 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.LoginDto;
-import com.example.demo.dto.UserRegitrationDto;
+import com.example.demo.dto.LoginDTO;
+import com.example.demo.dto.UserRegitrationDTO;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +23,7 @@ public class AuthController {
     private BCryptPasswordEncoder passwordEncoder;
 
     @PostMapping("/registrar")
-    public String registrar(UserRegitrationDto dto){
+    public String registrar(UserRegitrationDTO dto){
         try {
             userService.registrarCiudadano(dto);
             return "redirect:/dashboard.html?success=true";
@@ -34,7 +33,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(LoginDto dto){
+    public String login(LoginDTO dto){
         Optional<User> userOpt = userService.buscarPorNombre(dto.nombre());
         if (userOpt.isPresent()){
             User user = userOpt.get();
