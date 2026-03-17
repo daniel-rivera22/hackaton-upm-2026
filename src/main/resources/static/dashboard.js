@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
  * Actualiza los widgets del clima y la tabla
  */
 function cargarPrediccion() {
-    return fetch('/dashboard/prediction')
+    return fetch('/api/citizen-dashboard/prediction')
         .then(response => {
             // Si el controlador devuelve 204 No Content o hay un error
             if (response.status === 204 || !response.ok) {
@@ -71,7 +71,7 @@ function cargarRecomendacionIA(username, predictionData) {
     params.append('prec', predictionData.prec || '');
     params.append('velmedia', predictionData.velmedia || '');
 
-    fetch('/dashboard/recommendation', {
+    fetch('/api/citizen-dashboard/recommendation', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
