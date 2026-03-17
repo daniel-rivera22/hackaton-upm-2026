@@ -55,7 +55,8 @@ public class CitizenController {
      * Endpoint para alimentar el div#panelIA de dashboard.html
      */
     @PostMapping("/recommendation")
-    public ResponseEntity<Map<String, String>> getLlmPoweredRecommendation(String username, PredictionDTO prediction) {
+    public ResponseEntity<Map<String, String>> getLlmPoweredRecommendation(@RequestParam String username,
+                                                                           @RequestBody PredictionDTO prediction) {
         Optional<User> citizen = userService.findByUsername(username);
         if(citizen.isEmpty()) return ResponseEntity.notFound().build();
         CitizenDTO currentCitizen = this.convertToDTO(citizen.get());

@@ -63,20 +63,13 @@ function cargarRecomendacionIA(username, predictionData) {
     const textoIA = document.getElementById('ia-text');
     textoIA.textContent = "Analizando la predicción meteorológica y tu perfil para generar un consejo...";
 
-    // Como en Java no pusimos @RequestBody, Spring espera parámetros de formulario (x-www-form-urlencoded)
-    const params = new URLSearchParams();
-    params.append('username', username);
-    params.append('fecha', predictionData.fecha || '');
-    params.append('tmax', predictionData.tmax || '');
-    params.append('prec', predictionData.prec || '');
-    params.append('velmedia', predictionData.velmedia || '');
-
-    fetch('/api/citizen-dashboard/recommendation', {
+    // Pasamos el username en la URL y enviamos el DTO completo en el Body
+    fetch(`/dashboard/recommendation?username=${username}`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json' // ¡Ahora sí enviamos JSON!
         },
-        body: params
+        body: JSON.stringify(predictionData)   // Magia: pasamos todo el objeto de golpe
     })
     .then(response => {
         if (!response.ok) {
@@ -85,11 +78,10 @@ function cargarRecomendacionIA(username, predictionData) {
         return response.json();
     })
     .then(data => {
-        // Tu controlador devuelve un Map.of("response", respuestaLlm)
         textoIA.textContent = data.response;
     })
     .catch(error => {
         console.error("Error al obtener recomendación de IA:", error);
-        textoIA.textContent = "El asistente inteligente no está disponible en este momento. Mantén la precaución habitual.";
+        textoIA.textContent = "El asistente inteligente no está disponible en este momento.";
     });
 }
