@@ -23,7 +23,7 @@ public class User {
     @Column(nullable = false)
     private TipoVivienda tipoVivienda;
 
-    @Column(nullable = false)
+    @Column
     private TipoNecesidades tipoNecesidades;
 
     @Column(nullable = false)

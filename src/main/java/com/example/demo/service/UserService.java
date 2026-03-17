@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.TipoNecesidades;
 import com.example.demo.model.User;
 import com.example.demo.model.Rol;
 import com.example.demo.dto.UserRegitrationDTO;
@@ -29,6 +30,11 @@ public class UserService {
         ciudadano.setUsername(dto.nombre().trim());
         ciudadano.setProvincia(dto.provincia());
         ciudadano.setTipoVivienda(dto.tipoVivienda());
+        if (dto.tipoNecesidades()==null){
+            ciudadano.setTipoNecesidades(TipoNecesidades.NINGUNA);
+        }else{
+            ciudadano.setTipoNecesidades(dto.tipoNecesidades());
+        }
         ciudadano.setTipoNecesidades(dto.tipoNecesidades());
         ciudadano.setPassword(passwordEncoder.encode(dto.password()));
         ciudadano.setRol(Rol.CIUDADANO);
